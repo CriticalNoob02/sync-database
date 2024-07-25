@@ -47,8 +47,13 @@ A estrutura do projeto foi separada em duas partes: [Infraestrutura](./infra/) e
 > OBS: A pasta [db](./infra/db) contem os volumes para subir os bancos de exemplo juntamente com a stack de monitoramento.
 
 
-### Monitoramento 
-O código possui um sistema de monitoramento com Prometheus vinculado ao Grafana, ambos sobem no [docker-compose-example](./infra/dockerfiles/docker-compose-example.yaml), existe um dash simples como modelo de consulta, o mesmo está diretamente vinculado aos bancos de exemplo.
+### Monitoramento
+O código possui um sistema de monitoramento com Prometheus vinculado ao Grafana, ambos sobem no [docker-compose-example](./infra/dockerfiles/docker-compose-example.yaml), existe alguns passos a fazer para configurar o grafana com o prometheus;
+
+1- Acesse a url `http://localhost:3000/login` e use o email `admin` e senha `admin` para  o primeiro acesso
+2- Vicular o prometheus no grafana, acesse o modulo de `Connections` do grafana e adicione um novo Data Source;
+3- Procure pelo core do Prometheus e configure a seguinte url `http://prometheus:9090`
+4- Acesse o modulo de `Dashboards`, crie um dashboard usando este molde [json](./infra/data/grafana_example/dashboard.json)
 
 > OBS: A raspagem do prometheus está com um tempo bem baixo por conta do alto desempenho de transição dos dados nos bancos de exemplo...
 

@@ -9,14 +9,12 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - ../db/data_final_example:/var/lib/postgresql/data
+      - ../data/data_final_example:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 15s
       timeout: 15s
       retries: 3
-    networks:
-        - python_network
 
   db-source:
     image: postgres:latest
@@ -25,34 +23,26 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      - ../db/data_source_example:/var/lib/postgresql/data
+      - ../data/data_source_example:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 15s
       timeout: 15s
       retries: 3
-    networks:
-        - python_network
 
   prometheus:
     image: prom/prometheus
     volumes:
-      - ../db/prometheus_example/prometheus.yaml:/etc/prometheus/prometheus.yml
+      - ../data/prometheus_example/prometheus.yaml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
-    networks:
-        - python_network
 
   grafana:
     image: grafana/grafana
     ports:
       - "3000:3000"
-    volumes:
-      - grafana-storage:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
-    networks:
-        - python_network
 
   sync-database:
     build:
@@ -68,17 +58,8 @@ services:
     ports: 
       - "5100:5100"
       - "8000:8000"
-    networks:
-      - python_network
     environment:
       DB_HOST_SOURCE: db-source
       DB_PORT_SOURCE: 5432
       DB_HOST_FINAL: db-final
       DB_PORT_FINAL: 5432
-
-networks:
-  python_network:
-    external: true
-
-volumes:
-  grafana-storage:

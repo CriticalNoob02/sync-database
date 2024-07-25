@@ -1,0 +1,32 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Criando modulos",
+  "steps": [
+    {
+      "title": "Diretorio_modulo",
+      "description": "Para iniciar crie um diretorio com o nome do modulo, lembrando que cada modulo pode ser correspondente a apenas um banco de dados",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 1,
+          "character": 130
+        }
+      }
+    },
+    {
+      "title": "Diretorio_tabela",
+      "description": "Agora você deve criar um diretório para representar as configurações da tabela, ela deve possuir um índice numérico no nome para evitar confusões durante o loop ex: 1-tabela_exemplo, durante o loop será usado esse índice como referência para ligar a tabela source e final então mantenha esses índices sincronizados em ambos os módulos."
+    },
+    {
+      "title": "Arquivo_mapper",
+      "description": "Dentro do diretório da tabela, você deve criar um arquivo de configuração chamado `mapper.py` seguindo o seguinte padrão: \n```python\ntable_map = {\n    \"table\": \"nome_da_tabela\",\n    \"schema\": \"schema_da_tabela\",\n    \"ref\": \"id_referencia caso exista, ou deixe vazio\",\n    \"limit\": 1000 ou 0\n}\n```\n\nUma observação, o serviço pode popular seus dados em rotinas por isso foi feito primordialmente com a ideia da sua tabela possuir um id de referência entre as tabelas source e final, porem foi adicionado a possibilidade de popular sem olhar para referência, nesse caso basta deixar as chaves `ref` e `limit` vazias. "
+    },
+    {
+      "title": "Arquivo_process",
+      "description": "Opcionalmente e possível criar uma função para tratar os dados lidos e entregar um padrão diferente para a escrita, basta criar um arquivo chamado `process.py` na tabela source, nele você pode criar uma função chamada `process` que recebe uma lista de tuplas e retorna outra lista de tuplas, mantendo esse padrão você pode fazer qualquer coisa com os dados dentro da função."
+    }
+  ]
+}

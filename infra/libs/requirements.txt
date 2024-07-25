@@ -1,0 +1,8 @@
+cx-Oracle==8.3.0
+requests==2.32.3
+rich==13.7.1
+psycopg2-binary==2.9.9
+virtualenv==20.26.3
+python-dotenv==1.0.1
+prometheus-client==0.20.0
+pytest==8.3.1 

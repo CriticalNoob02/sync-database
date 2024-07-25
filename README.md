@@ -1,4 +1,4 @@
-![badge-action](https://github.com/CriticalNoob02/sync-database/actions/workflows/continuous_deployment.yaml/badge.svg)
+![badge-action](https://github.com/CriticalNoob02/sync-database/actions/workflows/continuous_integration.yaml/badge.svg)
 
 # Sync-Databases ➤ 🐍 
 

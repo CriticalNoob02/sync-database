@@ -26,10 +26,7 @@ jobs:
 
       - name: Install dependencies     
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libpq-dev gcc python3-dev
-          python -m pip install --upgrade pip
-          make init
+          make install
 
       - name: Check Lint
         uses: reviewdog/action-flake8@v3

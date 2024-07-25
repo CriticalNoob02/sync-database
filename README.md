@@ -23,7 +23,7 @@ Uma aplicação simples e intuitiva para transferir dados entre bancos.
 
 <p align="center">
   <a href="https://github.com/radarsaude/api-ia">
-    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="65%" height="350" alt="Banner">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="80%" height="350" alt="Banner">
   </a>
 <p/>
 

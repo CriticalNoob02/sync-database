@@ -44,6 +44,8 @@ prometheus-client
 ### Organização
 A estrutura do projeto foi separada em duas partes: [Infraestrutura](./infra/) e [Aplicação](./app/) para segmentar melhor o projeto, facilitando modificações futuras.
 
+![Sync-data](https://github.com/user-attachments/assets/b452b5d0-0a08-48ff-97c2-d64298699625)
+
 > OBS: A pasta [db](./infra/db) contem os volumes para subir os bancos de exemplo juntamente com a stack de monitoramento.
 
 

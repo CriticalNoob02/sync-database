@@ -181,3 +181,5 @@ credentials_file.json
 env.json
 .venv/**
 infra/envs/.env
+infra/data/data_final_example/**
+infra/data/data_final_source/**

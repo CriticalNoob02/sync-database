@@ -6,7 +6,7 @@ def get_mapper_table(table: str, schema: str):
         case "postgres":
             return f"""
             SELECT
-                column_name
+                column_name, column_default
             FROM
                 information_schema.columns
             WHERE

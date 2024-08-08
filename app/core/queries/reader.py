@@ -1,4 +1,4 @@
-def get_reader_query_limit(id_ref: str, max_id: str, table: str, limit: int):
+def get_reader_query_ref(id_ref: str, max_id: str, table: str):
     return (f"""
            SELECT
                 *
@@ -6,10 +6,6 @@ def get_reader_query_limit(id_ref: str, max_id: str, table: str, limit: int):
                 {table}
            WHERE
                 {id_ref} > {max_id}
-           ORDER BY
-                {id_ref} ASC
-           LIMIT
-                {limit}
 ;""")
 
 

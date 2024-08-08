@@ -4,7 +4,7 @@ from rich.logging import RichHandler
 from rich.console import Console
 
 
-log_level = os.environ.get('LOG', 'INFO')
+log_level = os.environ.get('LOG_LEVEL', 'INFO')
 format = "%(message)s"
 logging.basicConfig(
     level=log_level,

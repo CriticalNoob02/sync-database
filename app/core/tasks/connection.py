@@ -2,11 +2,13 @@ from core.config.drive.postgresql import connect_ps
 from core.config.drive.oracle import connect_oracle
 from core.utils.rich_logs import get_traceback
 from core.config.envs import get_db_driver
+from psycopg2.extensions import cursor, connection
+
 
 DRIVER = get_db_driver()
 
 
-def get_connections(isSource: bool):
+def get_connections(isSource: bool) -> connection:
     try:
         match DRIVER:
             case "oracle":
@@ -23,7 +25,7 @@ def get_connections(isSource: bool):
         exit(1)
 
 
-def get_cursor_by_connection(conn):
+def get_cursor_by_connection(conn) -> cursor:
     match DRIVER:
         case "postgres":
             return conn.cursor()

@@ -1,7 +1,7 @@
 from core.queries.write import get_insert_query
 from core.tasks.connection import get_cursor_by_connection
 from core.utils.rich_logs import get_traceback
-from core.utils.rich_logs import LOG
+import logging
 
 
 def write(table_name: str, columns: list[str], connection, data: list[tuple]):
@@ -12,7 +12,7 @@ def write(table_name: str, columns: list[str], connection, data: list[tuple]):
             values=data,
             table=table_name
         )
-        LOG.debug(query)
+        logging.debug(query)
         final_cursor.execute(query)
     except Exception:
         get_traceback()

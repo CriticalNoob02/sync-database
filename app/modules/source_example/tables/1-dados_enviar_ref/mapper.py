@@ -1,6 +1,6 @@
 table_map = {
-    "table": "recebimento_sem_ref",
+    "table": "dados_enviar_ref",
     "schema": "public",
     "ref": "id",
-    "limit": 0
+    "limit": 50000
 }

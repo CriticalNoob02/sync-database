@@ -1,6 +1,6 @@
 table_map = {
-    "table": "dados_para_testes",
+    "table": "dados_receber",
     "schema": "public",
     "ref": "id",
-    "limit": 1000
+    "limit": 50000
 }

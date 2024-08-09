@@ -14,5 +14,11 @@ install:
 clean:
 	find . -type d -name '__pycache__' -exec rm -r {} +
 
+run:
+	python3 "app/run.py"
+
+run-migration:
+	python3 "infra/data/db_migration/gen_data.py"
+
 compose-example:
 	docker compose -f infra/dockerfiles/docker-compose-example.yaml up -d

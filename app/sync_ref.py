@@ -1,6 +1,7 @@
 from core.tasks import read, write, mapping
 from core.config.envs import get_query_limit
 from core.utils.rich_logs import get_traceback
+from core.utils.monitoring import ATT_TABLE
 import importlib
 import logging
 import os
@@ -12,9 +13,7 @@ def sync_ref(table,
              source_conn,
              final_conn,
              source_module,
-             final_module,
-             READ_COUNT,
-             WRITE_COUNT) -> None:
+             final_module) -> None:
 
     HAVE_PROCESS = os.path.exists(f'{SOURCE_PATH}/{table}/process.py')
     BATCH_SIZE = source_module.table_map["limit"] or get_query_limit()
@@ -40,8 +39,6 @@ def sync_ref(table,
             if not rows:
                 break
 
-            READ_COUNT.labels(table=table).inc(len(rows))
-
             if HAVE_PROCESS:
                 process = importlib.import_module(f'modules.{SOURCE}.tables.{table}.process')
                 rows = process.process(rows)
@@ -59,9 +56,7 @@ def sync_ref(table,
                 data=rows
                 )
 
-        WRITE_COUNT.labels(table=table).inc(len(rows))
+            ATT_TABLE.labels(table=table).set(1)
 
     except Exception:
         get_traceback()
-        # TODO remover o exit apos finalizar testes;
-        exit(1)

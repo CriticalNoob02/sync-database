@@ -1,6 +1,7 @@
 from core.tasks import read, write, mapping, truncate
 from core.config.envs import get_query_limit
 from core.utils.rich_logs import get_traceback
+from core.utils.monitoring import ATT_TABLE
 import importlib
 import logging
 import os
@@ -12,9 +13,7 @@ def sync_truncate(table,
                   source_conn,
                   final_conn,
                   source_module,
-                  final_module,
-                  READ_COUNT,
-                  WRITE_COUNT) -> None:
+                  final_module) -> None:
 
     HAVE_PROCESS = os.path.exists(f'{SOURCE_PATH}/{table}/process.py')
     HAVE_DECIDER = os.path.exists(f'{SOURCE_PATH}/{table}/decider.py')
@@ -42,7 +41,11 @@ def sync_truncate(table,
                 final_ref=False
                 )
 
-        if not result_cursor:
+            if not result_cursor:
+                return None
+
+        else:
+            logging.debug('Tabela ja esta atualizada...')
             return None
 
         logging.debug(f'batch size: {BATCH_SIZE}')
@@ -51,8 +54,6 @@ def sync_truncate(table,
             rows = result_cursor.fetchmany(size=BATCH_SIZE)
             if not rows:
                 break
-
-            READ_COUNT.labels(table=table).inc(len(rows))
 
             if HAVE_PROCESS:
                 process = importlib.import_module(f'modules.{SOURCE}.tables.{table}.process')
@@ -71,7 +72,7 @@ def sync_truncate(table,
                 data=rows
                 )
 
-        WRITE_COUNT.labels(table=table).inc(len(rows))
+            ATT_TABLE.labels(table=table).set(1)
 
     except Exception:
         get_traceback()

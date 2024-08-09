@@ -42,7 +42,9 @@ prometheus-client
 ### Organização
 A estrutura do projeto foi separada em duas partes: [Infraestrutura](./infra/) e [Aplicação](./app/) para segmentar melhor o projeto, facilitando modificações futuras.
 
-![Sync-data](https://github.com/user-attachments/assets/b452b5d0-0a08-48ff-97c2-d64298699625)
+![Sync-data(1)](https://github.com/user-attachments/assets/58f5e024-2a6a-4009-a446-d422090d657f)
+
+![Sync-data](https://github.com/user-attachments/assets/06f04079-3a1f-49f6-b0c1-87857c19b92a)
 
 
 ### Monitoramento

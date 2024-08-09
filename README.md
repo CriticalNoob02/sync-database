@@ -13,9 +13,7 @@ Uma aplicação simples e intuitiva para transferir dados entre bancos.
 * [Projeto](#projeto)
     * [Pre-requisitos](#pré-requisitos)
     * [Como rodar](#como-rodar)
-    * [Scripts](#scripts)
     * [Exemplo](#exemplo)
-    * [Testes](#testes)
     * [Configurando modulos](#configurando-modulos)
 
 ---
@@ -46,16 +44,9 @@ A estrutura do projeto foi separada em duas partes: [Infraestrutura](./infra/) e
 
 ![Sync-data](https://github.com/user-attachments/assets/b452b5d0-0a08-48ff-97c2-d64298699625)
 
-> OBS: A pasta [db](./infra/db) contem os volumes para subir os bancos de exemplo juntamente com a stack de monitoramento.
-
 
 ### Monitoramento
-O código possui um sistema de monitoramento com Prometheus vinculado ao Grafana, ambos sobem no [docker-compose-example](./infra/dockerfiles/docker-compose-example.yaml), existe alguns passos a fazer para configurar o grafana com o prometheus;
-
-1. Acesse a url `http://localhost:3000/login` e use o email `admin` e senha `admin` para  o primeiro acesso
-2. Vicular o prometheus no grafana, acesse o modulo de `Connections` do grafana e adicione um novo Data Source;
-3. Procure pelo core do Prometheus e configure a seguinte url `http://prometheus:9090`
-4. Acesse o modulo de `Dashboards`, crie um dashboard usando este molde [json](./infra/data/grafana_example/dashboard.json)
+O código possui um sistema de monitoramento com Prometheus vinculado ao Grafana, ambos sobem no [docker-compose-example](./infra/dockerfiles/docker-compose-example.yaml).
 
 > OBS: A raspagem do prometheus está com um tempo bem baixo por conta do alto desempenho de transição dos dados nos bancos de exemplo...
 
@@ -116,13 +107,16 @@ table_map = {
 4. Opcionalmente, é possível adicionar um tratamento para os dados lidos do módulo `source`, basta adicionar um arquivo `processor.py` no mesmo nível do mapper da tabela seguindo o exemplo da tabela [dados_para_testes](./app/modules/source_example/tables/1-dados_para_testes/process.py). As únicas regras para a função são manter o nome `process`, RECEBER e DEVOLVER uma lista de tuplas.
 
 
-### Scripts
-Foi criado alguns scripts para facilitar mais o trabalho com o sync-database;
+### Exemplo
+Foi criada uma base para testar a aplicação localmente, você pode seguir os seguintes passos para rodar os exemplos:
 
-... Aguarde ...
-
-
-### Testes
-O servico possui alguns testes das [tasks](./app/core/tasks/__init__.py) usando o [docker-compose-tests](./infra/dockerfiles/docker-compose-tests.yaml)
-
-... Aguarde ...
+- Copie o arquivo [env.example](./infra/envs/.env.example) e renomeio para .env mantendo os mesmos dados;
+- Rode o seguinte comando no terminal `make compose-example`;
+- Certifique-se de que os bancos subiram;
+- Rode o seguinte comando no terminal `make migration-example`;
+- Certifique-se de que as tabelas foram criadas e populadas;
+- Acesse a URL `http://localhost:3000/login` e use o e-mail `admin` e senha `admin` para o primeiro acesso.
+- Vincular o prometheus no grafana, acesse o módulo de `Connections` do grafana e adicione um novo Data Source;
+- Procure pelo core do Prometheus e configure a seguinte URL `http://prometheus:9090`
+- Acesse o módulo de `Dashboards`, crie um dashboard usando este molde [json](./infra/data/grafana_example/dashboard.json)
+- Para finalizar, inicie novamente o contêiner do sync-database que está caido no compose;

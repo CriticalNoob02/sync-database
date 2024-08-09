@@ -41,7 +41,7 @@ def read(source_conn,
         max_id_final = not_null_execute(final_cursor, query)
 
         if max_id_source == max_id_final:
-            logging.info(f"Tabela já atualizada | id final: {max_id_final}")
+            logging.debug(f"Tabela já atualizada | id final: {max_id_final}")
             return None
 
         else:

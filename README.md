@@ -112,7 +112,7 @@ Foi criada uma base para testar a aplicação localmente, você pode seguir os s
 - Para finalizar, inicie novamente o contêiner do sync-database que está caido no compose;
 
 <p align="center">
-  <a href="https://github.com/radarsaude/api-ia">
+  <a>
     <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="100%" height="320" alt="Banner">
   </a>
 <p/>

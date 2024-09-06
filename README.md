@@ -1,10 +1,3 @@
-<p align="center">
-  <a href="https://github.com/radarsaude/api-ia">
-    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="100%" height="320" alt="Banner">
-  </a>
-<p/>
-
-
 ![badge-action](https://github.com/CriticalNoob02/sync-database/actions/workflows/continuous_integration.yaml/badge.svg)
 
 # Sync-Databases ➤ 🐍 
@@ -22,7 +15,6 @@ Uma aplicação simples e intuitiva para transferir dados entre bancos.
     * [Como rodar](#como-rodar)
     * [Exemplo](#exemplo)
     * [Configurando modulos](#configurando-modulos)
-
 
 ## Estrutura
 
@@ -118,3 +110,9 @@ Foi criada uma base para testar a aplicação localmente, você pode seguir os s
 - Procure pelo core do Prometheus e configure a seguinte URL `http://prometheus:9090`
 - Acesse o módulo de `Dashboards`, crie um dashboard usando este molde [json](./infra/data/grafana_example/dashboard.json)
 - Para finalizar, inicie novamente o contêiner do sync-database que está caido no compose;
+
+<p align="center">
+  <a href="https://github.com/radarsaude/api-ia">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="100%" height="320" alt="Banner">
+  </a>
+<p/>

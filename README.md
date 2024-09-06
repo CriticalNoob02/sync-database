@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://github.com/radarsaude/api-ia">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="100%" height="320" alt="Banner">
+  </a>
+<p/>
+
+
 ![badge-action](https://github.com/CriticalNoob02/sync-database/actions/workflows/continuous_integration.yaml/badge.svg)
 
 # Sync-Databases ➤ 🐍 
@@ -16,17 +23,6 @@ Uma aplicação simples e intuitiva para transferir dados entre bancos.
     * [Exemplo](#exemplo)
     * [Configurando modulos](#configurando-modulos)
 
----
----
-
-<p align="center">
-  <a href="https://github.com/radarsaude/api-ia">
-    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/15294.png" width="80%" height="350" alt="Banner">
-  </a>
-<p/>
-
----
----
 
 ## Estrutura
 
